@@ -1,3 +1,3 @@
 github portfolio site
 
-Aleksey Nuzhdin
+(С) Aleksey Nuzhdin
