@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+<!--1800 1200 992 768 480--><!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -8,6 +9,7 @@
     <meta content="widh=device-widh, initial-scale=1" name="viewport">
     <meta content="ie=edge" http-rquiv="x-ua-compatible">
     <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>welcome</title>
   </head>
   <body>
@@ -16,6 +18,7 @@
         <div class="bg__parallax hero__bg"><img class="bg__sky bg__img" src="assets/images/sky1.png"><img class="bg__mountain_left bg__img" src="assets/images/mountain_left.png"><img class="bg__mountain_right bg__img" src="assets/images/mountain_right.png"></div>
         <div class="block__authorization"><a class="button__authorization button_authorization__welcom">авторизация</a></div>
         <div class="welcom__title">
+          <!--+img_srcset('test','jpg','jepk')--><img src="test.jpg" srcset="test1200.jpg 1280w, test1800.jpg 1800w">
           <div class="user welcom__user-block">
             <div class="user__photo user__phpto__welcom"><img class="user__photo__images" src="assets/images/user_avatar.jpg"></div>
             <div class="user__name">
@@ -26,9 +29,9 @@
             </div>
           </div>
           <ul class="socials">
-            <li class="socials__item"><a class="socials__link socials__link_vk" href=""></a></li>
-            <li class="socials__item"><a class="socials__link socials__link_gh" href=""></a></li>
-            <li class="socials__item"><a class="socials__link socials__link_in" href=""></a></li>
+            <li class="socials__item"><a class="socials__link socials__link_hero socials__link_vk" href=""></a></li>
+            <li class="socials__item"><a class="socials__link socials__link_hero socials__link_gh" href=""></a></li>
+            <li class="socials__item"><a class="socials__link socials__link_hero socials__link_in" href=""></a></li>
           </ul>
           <ul class="nav__menu welcom__nav-list">
             <li class="nav_menu__item nav_item__welcom"><a class="nav__link nav__link__welcom" href="works.html">Мои работы</a></li>
