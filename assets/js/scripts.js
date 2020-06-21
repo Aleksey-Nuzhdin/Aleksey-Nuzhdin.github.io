@@ -49,14 +49,70 @@ section.addEventListener('mousemove', moveLayers);
 
 //svg show-Scroll
 
-const svgScroll = function(){
-  circle = document.querySelectorAll('.skilss__scale__donut-segment'),
-  console.log(circle);
-  circle.style.opacity = '0';
+let circle = document.querySelectorAll('.skilss__scale__donut-segment'),
+    conteiner = document.querySelectorAll('.skills__items'),
+    scrollToTheItem = [],
+    strokeDasharrayDeffoult = [],
+    opacityDeffoult = [],
+    goAnimation = [],
+    wHeight = document.documentElement.clientHeight;
+
+
+const svgFadeOut = function(){
+  for(let i = 0; i < conteiner.length; i++){
+    conteiner[i].style.opacity = '1';         //0
+    conteiner[i].style.transition = '1s';
+    circle[i].style.strokeDashoffset = '200';
+    goAnimation[i] = true;
+  };
+};
+
+svgFadeOut();
+
+const animate = function({duration, draw, timing}) {
+
+  let start = performance.now();
+
+  requestAnimationFrame(function animate(time) {
+    let timeFraction = (time - start) / duration;
+    if (timeFraction > 1) timeFraction = 1;
+
+    let progress = timing(timeFraction)
+
+    draw(progress);
+
+    if (timeFraction < 1) {
+      requestAnimationFrame(animate);
+    }
+
+  });
+};
+
+const svgFadeInSlroll = function(i){
+  animate({
+    duration: 1000,
+    timing: function(timeFraction) {
+      return timeFraction;
+    },
+    draw: function(progress) {
+      circle[i].style.strokeDashoffset = 200 - (progress * 100);
+    }
+  });
 
 };
 
-svgScroll();
+window.onscroll = function () { 
+  
+  for(let i = 0; i < conteiner.length; i++){  
+    scrollToTheItem[i] = circle[i].getBoundingClientRect().top - wHeight; 
+    
+    if(scrollToTheItem[i] < -115 && goAnimation[i]){
+      svgFadeInSlroll(i);
+      goAnimation[i] = false;
+    }
+  };
+  
+};
 
 
 // var svgScroll = (function () {
