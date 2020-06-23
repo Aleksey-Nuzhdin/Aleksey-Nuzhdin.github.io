@@ -52,18 +52,22 @@ section.addEventListener('mousemove', moveLayers);
 let circle = document.querySelectorAll('.skilss__scale__donut-segment'),
     conteiner = document.querySelectorAll('.skills__items'),
     scrollToTheItem = [],
-    strokeDasharrayDeffoult = [],
-    opacityDeffoult = [],
+    strokeDashoffsetDeffoult = [],
+    coftStrokeDashoffset =[],
     goAnimation = [],
+    str = [],
     wHeight = document.documentElement.clientHeight;
 
 
 const svgFadeOut = function(){
   for(let i = 0; i < conteiner.length; i++){
-    conteiner[i].style.opacity = '1';         //0
+    conteiner[i].style.opacity = '0';         //0
     conteiner[i].style.transition = '1s';
-    circle[i].style.strokeDashoffset = '200';
+    str[i] = circle[i].style.strokeDashoffset;
+    strokeDashoffsetDeffoult[i] = Number(str[i][0] + str[i][1] + str[i][2]);
+    coftStrokeDashoffset[i] = (200 - strokeDashoffsetDeffoult[i])/100;
     goAnimation[i] = true;
+    circle[i].style.strokeDashoffset = '200';
   };
 };
 
@@ -95,7 +99,8 @@ const svgFadeInSlroll = function(i){
       return timeFraction;
     },
     draw: function(progress) {
-      circle[i].style.strokeDashoffset = 200 - (progress * 100);
+      circle[i].style.strokeDashoffset = 200 - (progress * 100)*coftStrokeDashoffset[i];
+      conteiner[i].style.opacity = progress*4;
     }
   });
 
@@ -115,37 +120,3 @@ window.onscroll = function () {
 };
 
 
-// var svgScroll = (function () {
-// 	var svg = document.getElementById('heisenberg'),
-// 		svgPath = document.querySelectorAll('#heisenberg .group'),
-// 		windowMargin = window.innerHeight / 3,
-// 		svgRect = svg.getBoundingClientRect(),
-// 		svgPos = svgRect.top;
-
-// 	return {
-// 		grow: function (wScroll) {
-// 			var startAnimate = wScroll - svgPos + windowMargin,
-// 				pixelsElapsed = svgPos - wScroll,
-// 				percentsElapsed = 100 - Math.ceil(pixelsElapsed / windowMargin * 100),
-// 				percentsDraw = 1200 / 100 * percentsElapsed;
-
-// 			if (startAnimate >= 0) {
-// 				var drawAmount = 1200 - percentsDraw;
-
-// 				if (drawAmount > 0) {
-// 					svgPath.forEach(function (item) {
-// 						item.style.strokeDashoffset = drawAmount;
-// 					});
-// 				}
-// 			}
-// 		}
-// 	}
-// }());
-
-
-// window.onscroll = function () {
-// 	var wScroll = window.pageYOffset;
-
-// 	parallax.init(wScroll);
-// 	svgScroll.grow(wScroll);
-// };
