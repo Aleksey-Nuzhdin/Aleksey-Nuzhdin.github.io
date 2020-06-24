@@ -1,5 +1,10 @@
+"use strict";
 
 //preloader
+
+let bodyBlock = document.getElementsByTagName('body')[0];
+
+bodyBlock.style.overflow = 'hidden';
 
 window.addEventListener("load", function(event) {
   
@@ -19,11 +24,13 @@ window.addEventListener("load", function(event) {
    }
   })
 
+  bodyBlock.style.overflow = 'auto';
+
 });
 
 //parallax
 
-let parallaxConteiner = document.getElementById('parallax');
+let parallaxConteiner = document.getElementById('parallax'),
     section = document.getElementById('section'),
     parallaxLevels = parallaxConteiner.childNodes;
 
@@ -65,7 +72,7 @@ const svgFadeOut = function(){
     conteiner[i].style.transition = '1s';
     str[i] = circle[i].style.strokeDashoffset;
     strokeDashoffsetDeffoult[i] = Number(str[i][0] + str[i][1] + str[i][2]);
-    coftStrokeDashoffset[i] = (200 - strokeDashoffsetDeffoult[i])/100;
+    coftStrokeDashoffset[i] = (strokeDashoffsetDeffoult[i] - 100)/100;
     goAnimation[i] = true;
     circle[i].style.strokeDashoffset = '200';
   };
@@ -94,7 +101,7 @@ const animate = function({duration, draw, timing}) {
 
 const svgFadeInSlroll = function(i){
   animate({
-    duration: 1000,
+    duration: 750,
     timing: function(timeFraction) {
       return timeFraction;
     },
@@ -111,7 +118,7 @@ window.onscroll = function () {
   for(let i = 0; i < conteiner.length; i++){  
     scrollToTheItem[i] = circle[i].getBoundingClientRect().top - wHeight; 
     
-    if(scrollToTheItem[i] < -115 && goAnimation[i]){
+    if(scrollToTheItem[i] < -70 && goAnimation[i]){
       svgFadeInSlroll(i);
       goAnimation[i] = false;
     }

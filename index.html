@@ -1,5 +1,4 @@
-
-<!--1800 1200 992 768 480--><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -17,7 +16,19 @@
   <body>
     <div class="vue__preloader">
       <transition name="fadeOut">
-        <div class="preloader" v-if="fade"></div>
+        <div class="preloader" v-if="fade">
+          <div class="circle__cont circle__o">
+            <div class="circle__dot"></div>
+          </div>
+          <div class="circle__cont circle__t">
+            <div class="circle__dot"></div>
+          </div>
+          <div class="circle__cont circle__f">
+            <div class="circle__dot"></div>
+          </div>
+          <div class="circle__block"></div>
+          <div class="preloader__text">Ждём хорошей погоды</div>
+        </div>
       </transition>
     </div>
     <div class="container container__welcom">
