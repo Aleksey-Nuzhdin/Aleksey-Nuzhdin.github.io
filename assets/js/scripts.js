@@ -78,8 +78,6 @@ const svgFadeOut = function(){
   };
 };
 
-svgFadeOut();
-
 const animate = function({duration, draw, timing}) {
 
   let start = performance.now();
@@ -146,8 +144,6 @@ const addEventBtnSkroll = () => {
   };
 };
 
-addEventBtnSkroll();
-
 //skrollBlogArticles
 
 const getCoords = function(elem) { 
@@ -167,6 +163,7 @@ let titleArticlesBlog = document.querySelectorAll('.sidebar__article__item'),
     posActivArticleTop = [],
     posActivArticlebottom = [],
     articlesPosTop = [],
+    chekStartAnimation = true, 
     checkNewArticles = 0;
 
 for(let i = 0; i<articlesBlog.length; i++ ){
@@ -174,7 +171,15 @@ for(let i = 0; i<articlesBlog.length; i++ ){
   articlesPosBottom[i] = articlesPosTop[i] + articlesBlog[i].offsetHeight;
 };
 
+const returTrue = () => {
+  chekStartAnimation = true;
+}
+
 const goToThisArticle = function(){
+
+  // removeEventgoToThisArticle();
+  // setTimeout(addEventgoToThisArticle,3000);
+
   for(let i = 0; i < titleArticlesBlog.length; i++){
     titleArticlesBlog[i].classList.remove('sidebar__article__item_activ');
   };
@@ -185,11 +190,22 @@ const goToThisArticle = function(){
       indexEl = arrayArticles.indexOf(this),
       posElY = getCoords(articlesBlog[indexEl]).top;
 
-  setTimeout(winSkroll, 100, posElY-40, 0);
+  winSkroll(posElY-40, 0);
+
+  //setTimeout(winSkroll, 300, posElY-40, 0);
 };
 
-for(let i = 0; i<titleArticlesBlog.length; i++){
-  titleArticlesBlog[i].addEventListener('click', goToThisArticle);
+
+const addEventgoToThisArticle = function(){
+  for(let i = 0; i<titleArticlesBlog.length; i++){
+    titleArticlesBlog[i].addEventListener('click', goToThisArticle);
+  };
+};
+
+const removeEventgoToThisArticle = function(){
+  for(let i = 0; i<titleArticlesBlog.length; i++){
+    titleArticlesBlog[i].removeEventListener('click', goToThisArticle);
+  };
 };
 
 //window onscroll showSVG
@@ -233,16 +249,42 @@ const winSkrollBlogArticles = function(sliderArticleList, skrollHeight){
   };
 }
 
+//moveSidebarArticleList
+
+let sidebarBlogMark = document.querySelector('.sldebar__article_mark_circle'),
+    sidebarBlogConteinrt = document.querySelector('.sidebar__blog');
+
+
+const moveSidebarBlog = function(posX){
+  let moveX = window.event.clientX;
+
+  sidebarBlogConteinrt.style.left = (moveX-350) + 'px';
+
+};
+
+sidebarBlogMark.addEventListener('mousedown',
+()=>sidebarBlogMark.addEventListener('mousemove', moveSidebarBlog) );
+
+sidebarBlogMark.addEventListener('mouseup',
+()=>sidebarBlogMark.removeEventListener('mousemove', moveSidebarBlog) );
+
+
+
+
+
 //window onscroll 
 
 window.onscroll = function() { 
-  let sliderArticleList = document.querySelectorAll('.sidebar__article__list')[0],
+  let sliderArticleList = document.querySelectorAll('.sidebar__article.sidebar__blog')[0],
       skrollHeight = window.scrollY;
 
-  winSkrollShowSvg();
-  
+  winSkrollShowSvg(); 
   winSkrollBlogArticles(sliderArticleList, skrollHeight);
 
   
 };
 
+
+svgFadeOut();
+addEventBtnSkroll();
+addEventgoToThisArticle();
