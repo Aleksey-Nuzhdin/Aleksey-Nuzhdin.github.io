@@ -47,8 +47,8 @@ function moveLayers(e){
       levelStyle = parallaxLevels[i].style;
       coefficent =  window.innerWidth/(25 * i);
       levelStyle.transform = 'translate3d(' + (moveX/coefficent) + 'px ,' + (moveY/coefficent)/2 + 'px , 0)';
-    }
-  }
+    };
+  };
 
 };
 
@@ -63,7 +63,7 @@ let circle = document.querySelectorAll('.skilss__scale__donut-segment'),
     coftStrokeDashoffset =[],
     goAnimation = [],
     str = [],
-    wHeight = document.documentElement.clientHeight;
+    userClientHeight =  document.documentElement.clientHeight;
 
 
 const svgFadeOut = function(){
@@ -113,17 +113,133 @@ const svgFadeInSlroll = function(i){
 
 };
 
-window.onscroll = function () { 
-  
+// btn scroll
+
+const winSkroll = function(top = 0, left = 0, behavior = 'smooth'){
+  window.scroll({
+    behavior: behavior,
+    top: top,
+    left: left,
+  });
+};
+
+let btnDown = document.querySelectorAll('.but-down'),
+    btnUp = document.querySelectorAll('.but-up');
+    
+
+const btnSkrollDown = () => {
+
+  winSkroll(userClientHeight, 0);
+};
+
+const btnSkrollUp = () =>{
+  winSkroll(0, 0);
+};
+
+const addEventBtnSkroll = () => {
+  if(btnDown.length != 0){
+    btnDown[0].addEventListener('click', btnSkrollDown);
+  };
+
+  if(btnUp.length != 0){
+    btnUp[0].addEventListener('click', btnSkrollUp);
+  };
+};
+
+addEventBtnSkroll();
+
+//skrollBlogArticles
+
+const getCoords = function(elem) { 
+  let box = elem.getBoundingClientRect();
+
+  return {
+    top: box.top + pageYOffset,
+    left: box.left + pageXOffset
+  };
+}  
+
+
+let titleArticlesBlog = document.querySelectorAll('.sidebar__article__item'),
+    articlesBlog = document.querySelectorAll('.article__content__item'),
+    articlesPosBottom = [],
+    posActivArticleTop = [],
+    posActivArticlebottom = [],
+    articlesPosTop = [],
+    checkNewArticles = 0;
+
+for(let i = 0; i<articlesBlog.length; i++ ){
+  articlesPosTop[i] = getCoords(articlesBlog[i]).top;
+  articlesPosBottom[i] = articlesPosTop[i] + articlesBlog[i].offsetHeight;
+};
+
+const goToThisArticle = function(){
+  for(let i = 0; i < titleArticlesBlog.length; i++){
+    titleArticlesBlog[i].classList.remove('sidebar__article__item_activ');
+  };
+
+  this.classList.add('sidebar__article__item_activ');
+
+  let arrayArticles = [...titleArticlesBlog],
+      indexEl = arrayArticles.indexOf(this),
+      posElY = getCoords(articlesBlog[indexEl]).top;
+
+  setTimeout(winSkroll, 100, posElY-40, 0);
+};
+
+for(let i = 0; i<titleArticlesBlog.length; i++){
+  titleArticlesBlog[i].addEventListener('click', goToThisArticle);
+};
+
+//window onscroll showSVG
+
+const winSkrollShowSvg = function(){
   for(let i = 0; i < conteiner.length; i++){  
-    scrollToTheItem[i] = circle[i].getBoundingClientRect().top - wHeight; 
+    scrollToTheItem[i] = circle[i].getBoundingClientRect().top - userClientHeight; 
     
     if(scrollToTheItem[i] < -70 && goAnimation[i]){
       svgFadeInSlroll(i);
       goAnimation[i] = false;
     }
   };
-  
 };
 
+//window onscroll skrollBlogArticles
+
+const winSkrollBlogArticles = function(sliderArticleList, skrollHeight){
+  if(userClientHeight <= skrollHeight && sliderArticleList != undefined){
+    sliderArticleList.style.top = (skrollHeight - userClientHeight) + 'px';
+
+    let activPageYOffset = pageYOffset + (userClientHeight/2);
+      
+    for(let i = 0; i<articlesBlog.length; i++ ){
+
+      if( activPageYOffset < (articlesPosBottom[i]-20) && activPageYOffset > (articlesPosTop[i]+50) ){   
+
+        if(checkNewArticles != i){
+
+          for(let i = 0; i < titleArticlesBlog.length; i++){
+            titleArticlesBlog[i].classList.remove('sidebar__article__item_activ');
+          };
+
+          titleArticlesBlog[i].classList.add('sidebar__article__item_activ');
+          checkNewArticles = i;
+        }
+      };
+    };
+  };
+}
+
+//window onscroll 
+
+window.onscroll = function() { 
+  let sliderArticleList = document.querySelectorAll('.sidebar__article__list')[0],
+      skrollHeight = window.scrollY;
+
+  winSkrollShowSvg();
+  
+  winSkrollBlogArticles(sliderArticleList, skrollHeight);
+
+  
+};
 
