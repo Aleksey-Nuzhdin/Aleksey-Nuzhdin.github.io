@@ -162,6 +162,7 @@ const getCoords = function(elem) {
 
 let titleArticlesBlog = document.querySelectorAll('.sidebar__article__item'),
     articlesBlog = document.querySelectorAll('.article__content__item'),
+    sldebarArticleMark = document.querySelectorAll('.sldebar__article_mark')[0],
     articlesPosBottom = [],
     posActivArticleTop = [],
     posActivArticlebottom = [],
@@ -214,7 +215,7 @@ const winSkrollBlogArticles = function(sliderArticleList, skrollHeight){
       
     for(let i = 0; i<articlesBlog.length; i++ ){
 
-      if( activPageYOffset < (articlesPosBottom[i]-20) && activPageYOffset > (articlesPosTop[i]+50) ){   
+      if( activPageYOffset < (articlesPosBottom[i]-10) && activPageYOffset > (articlesPosTop[i]+50) ){   
 
         if(checkNewArticles != i){
 
@@ -223,6 +224,8 @@ const winSkrollBlogArticles = function(sliderArticleList, skrollHeight){
           };
 
           titleArticlesBlog[i].classList.add('sidebar__article__item_activ');
+          sldebarArticleMark.style.top = titleArticlesBlog[i].offsetTop + 'px';
+          sldebarArticleMark.style.height = titleArticlesBlog[i].offsetHeight + 'px';
           checkNewArticles = i;
         }
       };
