@@ -255,15 +255,14 @@ let sidebarBlogMark = document.querySelector('.sldebar__article_mark_circle'),
     sidebarBlogConteinrt = document.querySelector('.sidebar__blog');
 
 
-const moveSidebarBlog = function(posX){
+const moveSidebarBlog = function(){
   let moveX = window.event.clientX;
-
   sidebarBlogConteinrt.style.left = (moveX-350) + 'px';
 
 };
 
 sidebarBlogMark.addEventListener('mousedown',
-()=>sidebarBlogMark.addEventListener('mousemove', moveSidebarBlog) );
+()=>sidebarBlogMark.addEventListener('mousemove',moveSidebarBlog) );
 
 sidebarBlogMark.addEventListener('mouseup',
 ()=>sidebarBlogMark.removeEventListener('mousemove', moveSidebarBlog) );
@@ -275,7 +274,7 @@ sidebarBlogMark.addEventListener('mouseup',
 //window onscroll 
 
 window.onscroll = function() { 
-  let sliderArticleList = document.querySelectorAll('.sidebar__article.sidebar__blog')[0],
+  let sliderArticleList = document.querySelector('.sidebar__article__list'),
       skrollHeight = window.scrollY;
 
   winSkrollShowSvg(); 
