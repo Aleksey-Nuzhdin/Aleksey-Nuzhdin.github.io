@@ -65,7 +65,6 @@ let circle = document.querySelectorAll('.skilss__scale__donut-segment'),
     str = [],
     userClientHeight =  document.documentElement.clientHeight;
 
-
 const svgFadeOut = function(){
   for(let i = 0; i < conteiner.length; i++){
     conteiner[i].style.opacity = '0';         //0
@@ -124,7 +123,6 @@ const winSkroll = function(top = 0, left = 0, behavior = 'smooth'){
 let btnDown = document.querySelectorAll('.but-down'),
     btnUp = document.querySelectorAll('.but-up');
     
-
 const btnSkrollDown = () => {
 
   winSkroll(userClientHeight, 0);
@@ -177,9 +175,6 @@ const returTrue = () => {
 
 const goToThisArticle = function(){
 
-  // removeEventgoToThisArticle();
-  // setTimeout(addEventgoToThisArticle,3000);
-
   for(let i = 0; i < titleArticlesBlog.length; i++){
     titleArticlesBlog[i].classList.remove('sidebar__article__item_activ');
   };
@@ -192,19 +187,11 @@ const goToThisArticle = function(){
 
   winSkroll(posElY-40, 0);
 
-  //setTimeout(winSkroll, 300, posElY-40, 0);
 };
-
 
 const addEventgoToThisArticle = function(){
   for(let i = 0; i<titleArticlesBlog.length; i++){
     titleArticlesBlog[i].addEventListener('click', goToThisArticle);
-  };
-};
-
-const removeEventgoToThisArticle = function(){
-  for(let i = 0; i<titleArticlesBlog.length; i++){
-    titleArticlesBlog[i].removeEventListener('click', goToThisArticle);
   };
 };
 
@@ -253,55 +240,107 @@ const winSkrollBlogArticles = function(sliderArticleList, skrollHeight){
 
 let sidebarBlogMark = document.querySelector('.sldebar__article_mark_circle'),
     sidebarMoveConteiner = document.querySelector('.blog'),
+    eLClientX,
     positionMouseX,
     offsetLeftEl,
-    sidebarBlogConteinet = document.querySelector('.sidebar__blog');
+    bgSidebarMoveConteiner = document.querySelector('.bg__show-svipearticle-bar'),
+    sidebarBlogConteiner = document.querySelector('.sidebar__blog');
 
-
-const moveSidebarBlogMouse = function(){
-  let eLClientX = window.event.clientX,
-      fixMoveX = eLClientX - positionMouseX,
-      moveX = fixMoveX+offsetLeftEl+350;
-
-  if(-5 <= moveX && moveX <= 280){
-    sidebarBlogConteinet.style.left = (fixMoveX+offsetLeftEl) + 'px';
-
-  };
+  
+const eventMouseMove = function(){ 
+  let eLClientX = window.event.clientX;
+  MoveSidebarBlog(eLClientX);     
 };
 
-const moveSidebarBlogTouch = function(e){
-  let eLClientX = e.changedTouches[0].clientX,
-      fixMoveX = eLClientX - positionMouseX,
+const eventToucheMove = function(e){ 
+  let eLClientX = e.changedTouches[0].clientX; 
+  MoveSidebarBlog(eLClientX);
+};
+
+const deltEventMoveTransition = function(){
+  sidebarBlogConteiner.style.transition = '0s'
+};
+
+const deltEventMoveLeft = function(){
+  bgSidebarMoveConteiner.style.left = '-100%';
+};
+
+const finishMoveSideBar = function(){
+  let offsetLeft = sidebarBlogConteiner.offsetLeft;
+  if(offsetLeft < -175){
+    sidebarBlogConteiner.style.transition = '.5s';
+    bgSidebarMoveConteiner.style.opacity = '0';
+    sidebarBlogConteiner.style.left = -350 + 'px';
+    sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove);
+    sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove);
+    setTimeout(deltEventMoveTransition, 500);
+    setTimeout(deltEventMoveLeft, 500);
+  }else{
+    bgSidebarMoveConteiner.style.left = '0';
+    bgSidebarMoveConteiner.style.opacity = '1';
+    sidebarBlogConteiner.style.transition = '.5s';
+    sidebarBlogConteiner.style.left = -70 + 'px';
+    sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove);
+    sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove);
+    setTimeout(deltEventMoveTransition, 500);
+  };
+
+};
+
+const MoveSidebarBlog = function(eLClientX){
+  let fixMoveX = eLClientX - positionMouseX,
       moveX = fixMoveX+offsetLeftEl+350;
-  
+
   if(0 <= moveX && moveX <= 280){
-    sidebarBlogConteinet.style.left = (fixMoveX + offsetLeftEl) + 'px';
+    sidebarBlogConteiner.style.left = (fixMoveX+offsetLeftEl) + 'px';
+
+    if(fixMoveX > 150){
+      bgSidebarMoveConteiner.style.left = '0';
+      bgSidebarMoveConteiner.style.opacity = '1';
+      sidebarBlogConteiner.style.transition = '.5s';
+      sidebarBlogConteiner.style.left = -70 + 'px';
+      sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove);
+      sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove);
+      setTimeout(deltEventMoveTransition, 500);
+    }else if(fixMoveX <-100){
+      sidebarBlogConteiner.style.transition = '.5s';
+      bgSidebarMoveConteiner.style.opacity = '0';
+      sidebarBlogConteiner.style.left = -350 + 'px';
+      sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove);
+      sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove);
+      setTimeout(deltEventMoveTransition, 500);
+      setTimeout(deltEventMoveLeft, 500);
+    };
+
   };
 };
 
 const addEventmoveSidebarBlog = function(){
-  sidebarBlogConteinet.addEventListener('mousedown',
-    ()=> {
+
+  sidebarBlogConteiner.addEventListener('mousedown',
+    ()=> {    
       positionMouseX = window.event.clientX;
-      offsetLeftEl = sidebarBlogConteinet.offsetLeft;
-      sidebarMoveConteiner.addEventListener('mousemove',  moveSidebarBlogMouse
-    ) } );
+      offsetLeftEl = sidebarBlogConteiner.offsetLeft;
+      sidebarMoveConteiner.addEventListener('mousemove', eventMouseMove   
+  ) } );
 
   sidebarMoveConteiner.addEventListener('mouseup',
-    ()=>sidebarMoveConteiner.removeEventListener('mousemove',  moveSidebarBlogMouse) );
+    ()=>sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove) );
 
-  sidebarBlogConteinet.addEventListener('touchstart',
+    sidebarBlogConteiner.addEventListener('touchstart',
     (e)=>{
-      console.log(e);
       positionMouseX = e.changedTouches[0].clientX;
-      offsetLeftEl = sidebarBlogConteinet.offsetLeft;
-     sidebarMoveConteiner.addEventListener('touchmove', function(e){ moveSidebarBlogTouch(e) })} );
+      offsetLeftEl = sidebarBlogConteiner.offsetLeft;
+      sidebarMoveConteiner.addEventListener('touchmove', eventToucheMove   
+  )} );
 
   sidebarMoveConteiner.addEventListener('touchend',
-    ()=>sidebarMoveConteiner.removeEventListener('touchmove', function(e){ moveSidebarBlogTouch(e) }) );
+    ()=>sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove) );
+
+  sidebarMoveConteiner.addEventListener('touchend', finishMoveSideBar);
+  sidebarMoveConteiner.addEventListener('mouseup', finishMoveSideBar);
 
 }
-
 
 //window onscroll 
 
