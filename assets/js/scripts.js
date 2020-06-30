@@ -252,23 +252,55 @@ const winSkrollBlogArticles = function(sliderArticleList, skrollHeight){
 //moveSidebarArticleList
 
 let sidebarBlogMark = document.querySelector('.sldebar__article_mark_circle'),
-    sidebarBlogConteinrt = document.querySelector('.sidebar__blog');
+    sidebarMoveConteiner = document.querySelector('.blog'),
+    positionMouseX,
+    offsetLeftEl,
+    sidebarBlogConteinet = document.querySelector('.sidebar__blog');
 
 
-const moveSidebarBlog = function(){
-  let moveX = window.event.clientX;
-  sidebarBlogConteinrt.style.left = (moveX-350) + 'px';
+const moveSidebarBlogMouse = function(){
+  let eLClientX = window.event.clientX,
+      fixMoveX = eLClientX - positionMouseX,
+      moveX = fixMoveX+offsetLeftEl+350;
 
+  if(-5 <= moveX && moveX <= 280){
+    sidebarBlogConteinet.style.left = (fixMoveX+offsetLeftEl) + 'px';
+
+  };
 };
 
-sidebarBlogMark.addEventListener('mousedown',
-()=>sidebarBlogMark.addEventListener('mousemove',moveSidebarBlog) );
+const moveSidebarBlogTouch = function(e){
+  let eLClientX = e.changedTouches[0].clientX,
+      fixMoveX = eLClientX - positionMouseX,
+      moveX = fixMoveX+offsetLeftEl+350;
+  
+  if(0 <= moveX && moveX <= 280){
+    sidebarBlogConteinet.style.left = (fixMoveX + offsetLeftEl) + 'px';
+  };
+};
 
-sidebarBlogMark.addEventListener('mouseup',
-()=>sidebarBlogMark.removeEventListener('mousemove', moveSidebarBlog) );
+const addEventmoveSidebarBlog = function(){
+  sidebarBlogConteinet.addEventListener('mousedown',
+    ()=> {
+      positionMouseX = window.event.clientX;
+      offsetLeftEl = sidebarBlogConteinet.offsetLeft;
+      sidebarMoveConteiner.addEventListener('mousemove',  moveSidebarBlogMouse
+    ) } );
 
+  sidebarMoveConteiner.addEventListener('mouseup',
+    ()=>sidebarMoveConteiner.removeEventListener('mousemove',  moveSidebarBlogMouse) );
 
+  sidebarBlogConteinet.addEventListener('touchstart',
+    (e)=>{
+      console.log(e);
+      positionMouseX = e.changedTouches[0].clientX;
+      offsetLeftEl = sidebarBlogConteinet.offsetLeft;
+     sidebarMoveConteiner.addEventListener('touchmove', function(e){ moveSidebarBlogTouch(e) })} );
 
+  sidebarMoveConteiner.addEventListener('touchend',
+    ()=>sidebarMoveConteiner.removeEventListener('touchmove', function(e){ moveSidebarBlogTouch(e) }) );
+
+}
 
 
 //window onscroll 
@@ -287,3 +319,4 @@ window.onscroll = function() {
 svgFadeOut();
 addEventBtnSkroll();
 addEventgoToThisArticle();
+addEventmoveSidebarBlog();
