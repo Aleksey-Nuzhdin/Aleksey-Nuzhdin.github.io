@@ -212,7 +212,11 @@ const winSkrollShowSvg = function(){
 
 const winSkrollBlogArticles = function(sliderArticleList, skrollHeight){
   if(userClientHeight <= skrollHeight && sliderArticleList != undefined){
-    sliderArticleList.style.top = (skrollHeight - userClientHeight) + 'px';
+    if(userClientHeight < 500){
+      sliderArticleList.style.top = (skrollHeight - 500) + 'px';
+    }else{
+      sliderArticleList.style.top = (skrollHeight - userClientHeight) + 'px';
+    };
 
     let activPageYOffset = pageYOffset + (userClientHeight/2);
       
@@ -238,8 +242,7 @@ const winSkrollBlogArticles = function(sliderArticleList, skrollHeight){
 
 //moveSidebarArticleList
 
-let sidebarBlogMark = document.querySelector('.sldebar__article_mark_circle'),
-    sidebarMoveConteiner = document.querySelector('.blog'),
+let sidebarMoveConteiner = document.querySelector('.blog'),
     eLClientX,
     positionMouseX,
     offsetLeftEl,
@@ -265,24 +268,32 @@ const deltEventMoveLeft = function(){
   bgSidebarMoveConteiner.style.left = '-100%';
 };
 
+const animateCloseSidebar = function(){
+  sidebarBlogConteiner.style.transition = '.5s';
+  bgSidebarMoveConteiner.style.opacity = '0';
+  sidebarBlogConteiner.style.left = -350 + 'px';
+  sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove);
+  sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove);
+  setTimeout(deltEventMoveTransition, 500);
+  setTimeout(deltEventMoveLeft, 500);
+};
+
+const animateOpenSidebar = function(){
+  bgSidebarMoveConteiner.style.left = '0px';
+  bgSidebarMoveConteiner.style.opacity = '1';
+  sidebarBlogConteiner.style.transition = '.5s';
+  sidebarBlogConteiner.style.left = -70 + 'px';
+  sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove);
+  sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove);
+  setTimeout(deltEventMoveTransition, 500);
+};
+
 const finishMoveSideBar = function(){
   let offsetLeft = sidebarBlogConteiner.offsetLeft;
-  if(offsetLeft < -175){
-    sidebarBlogConteiner.style.transition = '.5s';
-    bgSidebarMoveConteiner.style.opacity = '0';
-    sidebarBlogConteiner.style.left = -350 + 'px';
-    sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove);
-    sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove);
-    setTimeout(deltEventMoveTransition, 500);
-    setTimeout(deltEventMoveLeft, 500);
+  if(offsetLeft < -210){        //Дипоазн значений от -350 до -70
+    animateCloseSidebar();
   }else{
-    bgSidebarMoveConteiner.style.left = '0';
-    bgSidebarMoveConteiner.style.opacity = '1';
-    sidebarBlogConteiner.style.transition = '.5s';
-    sidebarBlogConteiner.style.left = -70 + 'px';
-    sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove);
-    sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove);
-    setTimeout(deltEventMoveTransition, 500);
+    animateOpenSidebar();
   };
 
 };
@@ -295,21 +306,11 @@ const MoveSidebarBlog = function(eLClientX){
     sidebarBlogConteiner.style.left = (fixMoveX+offsetLeftEl) + 'px';
 
     if(fixMoveX > 150){
-      bgSidebarMoveConteiner.style.left = '0';
-      bgSidebarMoveConteiner.style.opacity = '1';
-      sidebarBlogConteiner.style.transition = '.5s';
-      sidebarBlogConteiner.style.left = -70 + 'px';
-      sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove);
-      sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove);
-      setTimeout(deltEventMoveTransition, 500);
-    }else if(fixMoveX <-100){
-      sidebarBlogConteiner.style.transition = '.5s';
-      bgSidebarMoveConteiner.style.opacity = '0';
-      sidebarBlogConteiner.style.left = -350 + 'px';
-      sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove);
-      sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove);
-      setTimeout(deltEventMoveTransition, 500);
-      setTimeout(deltEventMoveLeft, 500);
+      finishMoveSideBar();
+      //animateOpenSidebar();
+    }else if(fixMoveX <-150){
+      //animateCloseSidebar();
+      finishMoveSideBar();
     };
 
   };
@@ -342,7 +343,28 @@ const addEventmoveSidebarBlog = function(){
 
 }
 
-//window onscroll 
+//flip login
+
+let flipConteiner = document.querySelector('.welcom-title__conteiner.flip-conteiner'),
+    battonAutorization = document.querySelector('.button_authorization__welcom'),
+    battonBack = document.getElementById('goToWelcome');
+
+const flipLoginForward = function(){
+  flipConteiner.style.transform = 'rotateY(180deg)';
+  battonAutorization.style.opacity = 0;
+  battonAutorization.style.cursor = 'default';
+}
+const flipLoginBack = function(){
+  flipConteiner.style.transform = 'rotateY(0deg)';
+  battonAutorization.style.opacity = 1;
+  battonAutorization.style.cursor = 'pointer';
+}
+
+
+battonAutorization.addEventListener('click', flipLoginForward);
+battonBack.addEventListener('click', flipLoginBack);
+
+//window onscroll
 
 window.onscroll = function() { 
   let sliderArticleList = document.querySelector('.sidebar__article__list'),
@@ -351,11 +373,12 @@ window.onscroll = function() {
   winSkrollShowSvg(); 
   winSkrollBlogArticles(sliderArticleList, skrollHeight);
 
-  
+  if( (window.innerWidth <= 768) && (skrollHeight < (userClientHeight / 2)) ) animateCloseSidebar();
+
 };
 
 
 svgFadeOut();
 addEventBtnSkroll();
 addEventgoToThisArticle();
-addEventmoveSidebarBlog();
+if(window.innerWidth <= 768) addEventmoveSidebarBlog();
