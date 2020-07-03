@@ -345,24 +345,27 @@ const addEventmoveSidebarBlog = function(){
 
 //flip login
 
-let flipConteiner = document.querySelector('.welcom-title__conteiner.flip-conteiner'),
-    battonAutorization = document.querySelector('.button_authorization__welcom'),
-    battonBack = document.getElementById('goToWelcome');
+const flipLogin = function(){
+  let flipConteiner = document.querySelector('.welcom-title__conteiner.flip-conteiner'),
+      battonAutorization = document.querySelector('.button_authorization__welcom'),
+      battonBack = document.getElementById('goToWelcome');
 
-const flipLoginForward = function(){
-  flipConteiner.style.transform = 'rotateY(180deg)';
-  battonAutorization.style.opacity = 0;
-  battonAutorization.style.cursor = 'default';
+  const flipLoginForward = function(){
+    flipConteiner.style.transform = 'rotateY(180deg)';
+    battonAutorization.style.opacity = 0;
+    battonAutorization.style.cursor = 'default';
+  }
+  const flipLoginBack = function(){
+    flipConteiner.style.transform = 'rotateY(0deg)';
+    battonAutorization.style.opacity = 1;
+    battonAutorization.style.cursor = 'pointer';
+  }
+
+  if(battonAutorization != null){
+    battonAutorization.addEventListener('click', flipLoginForward);
+    battonBack.addEventListener('click', flipLoginBack);
+  }
 }
-const flipLoginBack = function(){
-  flipConteiner.style.transform = 'rotateY(0deg)';
-  battonAutorization.style.opacity = 1;
-  battonAutorization.style.cursor = 'pointer';
-}
-
-
-battonAutorization.addEventListener('click', flipLoginForward);
-battonBack.addEventListener('click', flipLoginBack);
 
 //window onscroll
 
@@ -381,4 +384,5 @@ window.onscroll = function() {
 svgFadeOut();
 addEventBtnSkroll();
 addEventgoToThisArticle();
+flipLogin();
 if(window.innerWidth <= 768) addEventmoveSidebarBlog();
