@@ -328,7 +328,7 @@ const addEventmoveSidebarBlog = function(){
   sidebarMoveConteiner.addEventListener('mouseup',
     ()=>sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove) );
 
-    sidebarBlogConteiner.addEventListener('touchstart',
+  sidebarBlogConteiner.addEventListener('touchstart',
     (e)=>{
       positionMouseX = e.changedTouches[0].clientX;
       offsetLeftEl = sidebarBlogConteiner.offsetLeft;
@@ -367,6 +367,67 @@ const flipLogin = function(){
   }
 }
 
+//curtain
+
+const curtains = function(){
+
+  let curtainsBatton = document.querySelector('.ham-menu'),
+      checkCurtainsActiv = false,
+      curtainsAnimationGo = true,
+      curtainArticle = document.querySelectorAll('.nav_item__curtains'),
+      leftCurtain = document.querySelector('.left-curtain'),
+      rightCurtain = document.querySelector('.right-curtain'),
+      cortainsConteiner = document.querySelector('.curtains__nav');
+
+  const curtainsDefflout = function(){
+    leftCurtain.style.left = '-50%';
+    rightCurtain.style.right = '-50%';
+    cortainsConteiner.style.top = '-10000px';
+    cortainsConteiner.style.opacity = 1;
+    curtainsBatton.style.position = 'absolute';
+
+    for(let i = 0; i<curtainArticle.length; i++){
+      curtainArticle[i].style.transform = 'scale(0.0, 0.0)';
+      curtainArticle[i].style.opacity = 0;
+    };
+  };
+
+  const curtainArticleShow = function(i){
+    curtainArticle[i].style.transform = 'scale(1.0, 1.0)';
+    curtainArticle[i].style.opacity = 1;
+    if ( i+1 < curtainArticle.length){ 
+      return setTimeout(curtainArticleShow, 300, i+1);
+    };
+  };
+
+  const curtainsDown = function(){
+    leftCurtain.style.left = '0px';
+    rightCurtain.style.right = '0px';
+    cortainsConteiner.style.top = '0px';
+    curtainsBatton.style.position = 'fixed';
+
+    setTimeout(curtainArticleShow, 300, 0);
+  };
+
+
+  const curtainsUp = function(){
+    cortainsConteiner.style.opacity = 0;
+    setTimeout(curtainsDefflout, 700);
+  };
+
+  const curtainsActiv = function(){
+    if(checkCurtainsActiv){
+      curtainsUp();
+      checkCurtainsActiv = false;
+    }else{
+      curtainsDown();
+      checkCurtainsActiv = true;
+    };
+  };
+
+  if(curtainsBatton != null) curtainsBatton.addEventListener('click', curtainsActiv);
+}
+
 //window onscroll
 
 window.onscroll = function() { 
@@ -376,7 +437,7 @@ window.onscroll = function() {
   winSkrollShowSvg(); 
   winSkrollBlogArticles(sliderArticleList, skrollHeight);
 
-  if( (window.innerWidth <= 768) && (skrollHeight < (userClientHeight / 2)) ) animateCloseSidebar();
+  if( (window.innerWidth <= 768) && (skrollHeight < (userClientHeight / 2)) && sidebarBlogConteiner != undefined ) animateCloseSidebar();
 
 };
 
@@ -385,4 +446,5 @@ svgFadeOut();
 addEventBtnSkroll();
 addEventgoToThisArticle();
 flipLogin();
+curtains();
 if(window.innerWidth <= 768) addEventmoveSidebarBlog();
