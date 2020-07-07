@@ -169,24 +169,26 @@ for(let i = 0; i<articlesBlog.length; i++ ){
   articlesPosBottom[i] = articlesPosTop[i] + articlesBlog[i].offsetHeight;
 };
 
-const returTrue = () => {
-  chekStartAnimation = true;
-}
-
 const goToThisArticle = function(){
 
-  for(let i = 0; i < titleArticlesBlog.length; i++){
-    titleArticlesBlog[i].classList.remove('sidebar__article__item_activ');
+  if(chekStartAnimation){
+    chekStartAnimation = false;
+    setTimeout(() => {
+      chekStartAnimation = true;
+    }, 300); 
+
+    for(let i = 0; i < titleArticlesBlog.length; i++){
+      titleArticlesBlog[i].classList.remove('sidebar__article__item_activ');
+    };
+
+    this.classList.add('sidebar__article__item_activ');
+
+    let arrayArticles = [...titleArticlesBlog],
+        indexEl = arrayArticles.indexOf(this),
+        posElY = getCoords(articlesBlog[indexEl]).top;
+
+    winSkroll(posElY-40, 0);
   };
-
-  this.classList.add('sidebar__article__item_activ');
-
-  let arrayArticles = [...titleArticlesBlog],
-      indexEl = arrayArticles.indexOf(this),
-      posElY = getCoords(articlesBlog[indexEl]).top;
-
-  winSkroll(posElY-40, 0);
-
 };
 
 const addEventgoToThisArticle = function(){
@@ -307,9 +309,7 @@ const MoveSidebarBlog = function(eLClientX){
 
     if(fixMoveX > 150){
       finishMoveSideBar();
-      //animateOpenSidebar();
     }else if(fixMoveX <-150){
-      //animateCloseSidebar();
       finishMoveSideBar();
     };
 
@@ -341,7 +341,34 @@ const addEventmoveSidebarBlog = function(){
   sidebarMoveConteiner.addEventListener('touchend', finishMoveSideBar);
   sidebarMoveConteiner.addEventListener('mouseup', finishMoveSideBar);
 
-}
+};
+
+const removeEventMoveSidevarBlog = function(){
+
+  sidebarBlogConteiner.removeEventListener('mousedown',
+  ()=> {    
+    positionMouseX = window.event.clientX;
+    offsetLeftEl = sidebarBlogConteiner.offsetLeft;
+    sidebarMoveConteiner.addEventListener('mousemove', eventMouseMove   
+  ) } );
+
+  sidebarMoveConteiner.removeEventListener('mouseup',
+    ()=>sidebarMoveConteiner.removeEventListener('mousemove',  eventMouseMove) );
+
+  sidebarBlogConteiner.removeEventListener('touchstart',
+    (e)=>{
+      positionMouseX = e.changedTouches[0].clientX;
+      offsetLeftEl = sidebarBlogConteiner.offsetLeft;
+      sidebarMoveConteiner.addEventListener('touchmove', eventToucheMove   
+  )} );
+
+  sidebarMoveConteiner.removeEventListener('touchend',
+    ()=>sidebarMoveConteiner.removeEventListener('touchmove', eventToucheMove) );
+
+  sidebarMoveConteiner.removeEventListener('touchend', finishMoveSideBar);
+  sidebarMoveConteiner.removeEventListener('mouseup', finishMoveSideBar);
+
+};
 
 //flip login
 
@@ -367,13 +394,53 @@ const flipLogin = function(){
   }
 }
 
+//Animation hamBatton
+
+let humButtonCheck = false,
+    pauseAnimationHumButton = false;
+
+const animateHumBatton = function(){
+  let lines = document.querySelectorAll('.ham-menu__lines'),
+      heigtBlock = document.querySelector('.ham-menu').offsetHeight,
+      heigtLines = lines[0].offsetHeight;
+
+  if(!pauseAnimationHumButton){
+    pauseAnimationHumButton = true;
+    setTimeout(() => {pauseAnimationHumButton = false}, 1000);
+
+    if(humButtonCheck){
+      lines[0].style.transform = 'rotate(0deg)';
+      lines[2].style.transform = 'rotate(0deg)';
+
+      setTimeout(() => {
+        lines[0].style.top = 0 + 'px';
+        lines[2].style.bottom = 0 + 'px';
+        lines[1].style.opacity = 1;
+      },500);
+      humButtonCheck = false;
+    }else{
+
+      lines[0].style.top = heigtBlock/2 - heigtLines/2 + 'px';
+      lines[2].style.bottom = heigtBlock/2 - heigtLines/2 + 'px';
+      
+      setTimeout(() => {
+        lines[1].style.opacity = 0;
+        lines[0].style.transform = 'rotate(45deg)';
+        lines[2].style.transform = 'rotate(-45deg)';
+      },500);
+
+      humButtonCheck = true;
+    };
+  };
+};
+
 //curtain
 
 const curtains = function(){
 
   let curtainsBatton = document.querySelector('.ham-menu'),
       checkCurtainsActiv = false,
-      curtainsAnimationGo = true,
+      pausedAnimationCurtains = false,
       curtainArticle = document.querySelectorAll('.nav_item__curtains'),
       leftCurtain = document.querySelector('.left-curtain'),
       rightCurtain = document.querySelector('.right-curtain'),
@@ -396,7 +463,7 @@ const curtains = function(){
     curtainArticle[i].style.transform = 'scale(1.0, 1.0)';
     curtainArticle[i].style.opacity = 1;
     if ( i+1 < curtainArticle.length){ 
-      return setTimeout(curtainArticleShow, 300, i+1);
+      return setTimeout(curtainArticleShow, 200, i+1);
     };
   };
 
@@ -406,7 +473,7 @@ const curtains = function(){
     cortainsConteiner.style.top = '0px';
     curtainsBatton.style.position = 'fixed';
 
-    setTimeout(curtainArticleShow, 300, 0);
+    setTimeout(curtainArticleShow, 200, 0);
   };
 
 
@@ -416,16 +483,24 @@ const curtains = function(){
   };
 
   const curtainsActiv = function(){
-    if(checkCurtainsActiv){
-      curtainsUp();
-      checkCurtainsActiv = false;
-    }else{
-      curtainsDown();
-      checkCurtainsActiv = true;
+
+    if(!pausedAnimationCurtains){
+      pausedAnimationCurtains = true;
+      setTimeout(() => {pausedAnimationCurtains = false}, 1000);
+      if(checkCurtainsActiv){
+        curtainsUp();
+        checkCurtainsActiv = false;
+      }else{
+        curtainsDown();
+        checkCurtainsActiv = true;
+      };
     };
   };
 
-  if(curtainsBatton != null) curtainsBatton.addEventListener('click', curtainsActiv);
+  if(curtainsBatton){
+    curtainsBatton.addEventListener('click', curtainsActiv);
+    curtainsBatton.addEventListener('click', animateHumBatton);
+  } 
 }
 
 //window onscroll
@@ -447,4 +522,34 @@ addEventBtnSkroll();
 addEventgoToThisArticle();
 flipLogin();
 curtains();
-if(window.innerWidth <= 768) addEventmoveSidebarBlog();
+
+let winWidhtBig;
+if(window.innerWidth <= 768) {
+  addEventmoveSidebarBlog();
+  winWidhtBig = false;
+}else{ winWidhtBig = true;}
+
+
+
+
+window.onresize = function(){
+  userClientHeight =  document.documentElement.clientHeight;
+
+  for(let i = 0; i<articlesBlog.length; i++ ){
+    articlesPosTop[i] = getCoords(articlesBlog[i]).top;
+    articlesPosBottom[i] = articlesPosTop[i] + articlesBlog[i].offsetHeight;
+  };
+
+  if(window.innerWidth > 768 && !winWidhtBig && sidebarBlogConteiner){
+    animateCloseSidebar();
+    removeEventMoveSidevarBlog();
+    sidebarBlogConteiner.style.left = 0 + 'px';
+    winWidhtBig = true;
+  };
+
+  if(window.innerWidth < 768 && winWidhtBig && sidebarBlogConteiner){
+    sidebarBlogConteiner.style.left = -350 + 'px';
+    addEventmoveSidebarBlog();
+    winWidhtBig = false;
+  };
+};
