@@ -17,15 +17,13 @@ window.addEventListener("load", function(event) {
     methods: {
       fadeOut(){
         this.fade= false;
+        bodyBlock.style.overflow = 'auto';
       }
     },
     mounted() {
-      this.fadeOut();
+      setTimeout(() => {this.fadeOut()},1000);
    }
   })
-
-  bodyBlock.style.overflow = 'auto';
-
 });
 
 //parallax
@@ -501,7 +499,104 @@ const curtains = function(){
     curtainsBatton.addEventListener('click', curtainsActiv);
     curtainsBatton.addEventListener('click', animateHumBatton);
   } 
-}
+};
+
+//slider Portfolio
+
+let controlTop = document.querySelector('.slider__control-lisrt_up'),
+    controlBottom = document.querySelector('.slider__control-lisrt_down'),
+    sliderMiddle = document.querySelector('.slider__portfolio'),
+    descItems = document.querySelectorAll('.slider__desc-item'),
+    activElem = 0,
+    pointerItems,
+    topItems,
+    bottomItems;
+
+const letSlider = function(){
+  topItems = controlTop.querySelectorAll('.slider__control');
+  bottomItems = controlBottom.querySelectorAll('.slider__control');
+  pointerItems = sliderMiddle.querySelectorAll('.slider__pointer');
+
+};
+
+const heightFixSlider = function(){
+  controlTop.style.height = topItems[activElem].offsetHeight + 'px';
+  controlBottom.style.height = topItems[activElem].offsetHeight + 'px';
+  sliderMiddle.style.height = pointerItems[activElem].offsetHeight + 'px';
+
+};
+
+const sliderStartPosition = function(){
+  topItems[0].style.top = 0;
+  bottomItems[0].style.top = 0;
+  pointerItems[0].style.top = 0;
+};
+
+const sliderPortfolio = function(){
+  let checkGoToSlide = true,
+      amountElem = topItems.length,
+      nextElem
+      ;
+  
+
+  const slideAnimation = function(){
+    let itemControlHeigt,
+        checkUpDown,
+        itemPointerlWidth;
+
+    if(checkGoToSlide){
+      checkGoToSlide = false;
+
+      if(this === controlTop){
+        checkUpDown = 1;
+      }else{
+        checkUpDown = -1;
+      };
+
+      itemControlHeigt = checkUpDown * topItems[activElem].offsetHeight,
+      itemPointerlWidth = checkUpDown * pointerItems[activElem].offsetWidth;
+
+      nextElem = (activElem + amountElem + checkUpDown) % (amountElem);
+
+      console.log(descItems, activElem, amountElem, itemPointerlWidth);
+      
+      descItems[activElem].style.opacity = 0;
+      descItems[nextElem].style.display = 'flex';
+      setTimeout(()=>{
+        descItems[nextElem].style.opacity = 1;
+      },300)
+
+      topItems[nextElem].style.top = itemControlHeigt + 'px';
+      topItems[nextElem].style.display = 'flex';
+      bottomItems[nextElem].style.top = -itemControlHeigt + 'px';
+      bottomItems[nextElem].style.display = 'flex';
+      pointerItems[nextElem].style.left = -itemPointerlWidth + 'px';
+      pointerItems[nextElem].style.display = 'flex';
+      
+      setTimeout(()=>{
+        topItems[nextElem].style.top = 0 + 'px';
+        topItems[activElem].style.top = -itemControlHeigt + 'px';
+        bottomItems[activElem].style.top = itemControlHeigt + 'px';
+        bottomItems[nextElem].style.top = 0 + 'px';
+        pointerItems[activElem].style.left = itemPointerlWidth + 'px';
+        pointerItems[nextElem].style.left = 0 + 'px';
+
+
+        setTimeout(()=>{
+          descItems[activElem].style.display = 'none';
+          topItems[activElem].style.display = 'none';
+          bottomItems[activElem].style.display = 'none';
+          pointerItems[activElem].style.display = 'none';
+          activElem=nextElem;
+          checkGoToSlide = true;
+        },500);
+      },20);
+    };
+  };
+  
+  controlTop.addEventListener('click', slideAnimation);
+  controlBottom.addEventListener('click', slideAnimation);
+};
 
 //window onscroll
 
@@ -523,8 +618,17 @@ addEventgoToThisArticle();
 flipLogin();
 curtains();
 
+
+if(controlTop){
+  letSlider();
+  heightFixSlider();
+  sliderStartPosition(); 
+  sliderPortfolio();
+}
+
+
 let winWidhtBig;
-if(window.innerWidth <= 768) {
+if(window.innerWidth <= 768 && sidebarBlogConteiner) {
   addEventmoveSidebarBlog();
   winWidhtBig = false;
 }else{ winWidhtBig = true;}
@@ -534,6 +638,8 @@ if(window.innerWidth <= 768) {
 
 window.onresize = function(){
   userClientHeight =  document.documentElement.clientHeight;
+
+  heightFixSlider();
 
   for(let i = 0; i<articlesBlog.length; i++ ){
     articlesPosTop[i] = getCoords(articlesBlog[i]).top;
