@@ -558,7 +558,7 @@ const sliderPortfolio = function(){
 
       nextElem = (activElem + amountElem + checkUpDown) % (amountElem);
 
-      console.log(descItems, activElem, amountElem, itemPointerlWidth);
+      //console.log(descItems, activElem, amountElem, itemPointerlWidth);
       
       descItems[activElem].style.opacity = 0;
       descItems[nextElem].style.display = 'flex';
@@ -621,7 +621,7 @@ curtains();
 
 if(controlTop){
   letSlider();
-  heightFixSlider();
+  setTimeout(heightFixSlider, 20);
   sliderStartPosition(); 
   sliderPortfolio();
 }
@@ -639,7 +639,7 @@ if(window.innerWidth <= 768 && sidebarBlogConteiner) {
 window.onresize = function(){
   userClientHeight =  document.documentElement.clientHeight;
 
-  heightFixSlider();
+  if(controlTop) heightFixSlider();
 
   for(let i = 0; i<articlesBlog.length; i++ ){
     articlesPosTop[i] = getCoords(articlesBlog[i]).top;
