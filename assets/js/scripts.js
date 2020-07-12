@@ -503,10 +503,13 @@ const curtains = function(){
 
 //slider Portfolio
 
-let controlTop = document.querySelector('.slider__control-lisrt_up'),
-    controlBottom = document.querySelector('.slider__control-lisrt_down'),
-    sliderMiddle = document.querySelector('.slider__portfolio'),
-    descItems = document.querySelectorAll('.slider__desc-item'),
+let controlTop =      document.querySelector('.slider__control-lisrt_up'),
+    controlBottom =   document.querySelector('.slider__control-lisrt_down'),
+    midleConeiner =   document.querySelector('.portfolio__right'),
+    sliderMiddle =    document.querySelector('.slider__portfolio'),
+    descItems =       document.querySelectorAll('.slider__desc-item'),
+    midleIMG =        document.querySelectorAll('.slided__img-poiinter'),
+    sectionPorfolio = document.querySelector('.portfolio'),
     activElem = 0,
     pointerItems,
     topItems,
@@ -519,11 +522,31 @@ const letSlider = function(){
 
 };
 
+
 const heightFixSlider = function(){
+  if(window.innerWidth > 768){
+    sliderMiddle.style.height = midleIMG[activElem].offsetHeight + 'px';
+  };
+
+  if(window.innerWidth > 1200 ) sectionPorfolio.style.height = 130 + controlTop.offsetHeight + midleIMG[activElem].offsetHeight + 'px';
+
   controlTop.style.height = topItems[activElem].offsetHeight + 'px';
   controlBottom.style.height = topItems[activElem].offsetHeight + 'px';
-  sliderMiddle.style.height = pointerItems[activElem].offsetHeight + 'px';
 
+  if(window.innerWidth < 768){
+    sliderMiddle.style.height = midleConeiner.offsetHeight + 'px';
+  };
+
+
+  if(window.innerWidth > 1200 && sectionPorfolio){
+    sectionPorfolio.style.height = 130 + controlTop.offsetHeight + midleIMG[activElem].offsetHeight + 'px';
+  };
+  if(window.innerWidth < 1200 && window.innerWidth > 768 && sectionPorfolio){
+    sectionPorfolio.style.height = 750 + 'px';
+  };
+  if(window.innerWidth < 768 && sectionPorfolio){
+    sectionPorfolio.style.height = 'auto';
+  };
 };
 
 const sliderStartPosition = function(){
@@ -619,12 +642,22 @@ flipLogin();
 curtains();
 
 
+
+const heightFixSliderShow = function(i){
+  heightFixSlider();
+  if ( i+1 < 5){ 
+    return setTimeout(heightFixSliderShow, 200, i+1);
+  };
+};
+
+
 if(controlTop){
   letSlider();
-  setTimeout(heightFixSlider, 20);
+  setTimeout(heightFixSlider, 50);
   sliderStartPosition(); 
   sliderPortfolio();
-}
+  heightFixSliderShow(0);
+};
 
 
 let winWidhtBig;
@@ -658,4 +691,6 @@ window.onresize = function(){
     addEventmoveSidebarBlog();
     winWidhtBig = false;
   };
+
+
 };
