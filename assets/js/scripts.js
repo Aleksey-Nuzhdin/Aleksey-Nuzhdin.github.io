@@ -52,6 +52,17 @@ function moveLayers(e){
 
 section.addEventListener('mousemove', moveLayers);
 
+//Buttoun entry
+
+if(document.getElementById('entry')){
+  let button = document.getElementById('entry'),
+      form = document.querySelector('.form__login');
+  
+  button.onclick = ()=>{
+    form.submit();
+  };
+};
+
 //svg show-Scroll
 
 let circle = document.querySelectorAll('.skilss__scale__donut-segment'),
