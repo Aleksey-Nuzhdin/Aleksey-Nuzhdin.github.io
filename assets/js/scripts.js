@@ -2,28 +2,22 @@
 
 //preloader
 
-let bodyBlock = document.getElementsByTagName('body')[0];
+let bodyBlock = document.querySelector('body');
 
 bodyBlock.style.overflow = 'hidden';
 
-window.addEventListener("load", function(event) {
-  
-  let preloader = new Vue({
-    el: '.vue__preloader',
-    data: {
-      message: 'fav!',
-      fade: true
-    },
-    methods: {
-      fadeOut(){
-        this.fade= false;
-        bodyBlock.style.overflow = 'auto';
-      }
-    },
-    mounted() {
-      setTimeout(() => {this.fadeOut()},1000);
-   }
-  })
+window.addEventListener("load", function() {
+  setTimeout(()=>{
+    let preloader = document.querySelector('.vue__preloader');
+    let preloaderBGC = document.querySelector('.preloader');
+ 
+    bodyBlock.style.overflow = 'auto';
+    preloaderBGC.style.opacity = 0;
+
+    setTimeout(()=>{
+      preloader.style.display = 'none';
+    },1000);
+  }, 500)
 });
 
 //parallax
