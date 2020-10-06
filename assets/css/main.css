@@ -1644,6 +1644,9 @@ color: #474b57; */
   opacity: .15;
   z-index: -1; }
 
+.work__but-down {
+  margin-bottom: 12.1875rem; }
+
 .portfolio {
   display: flex;
   position: relative;
@@ -2331,3 +2334,4 @@ color: #474b57; */
 
 .right-curtain {
   right: -50%; }
+
