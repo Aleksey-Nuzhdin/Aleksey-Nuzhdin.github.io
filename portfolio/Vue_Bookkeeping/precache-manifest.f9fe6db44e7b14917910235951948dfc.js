@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "64270673feea5314a8c7",
+    "revision": "f0938dcb6dae25d2066b",
     "url": "/portfolio/Vue_Bookkeeping/css/app.4cd6f013.css"
   },
   {
-    "revision": "1c68053df64fdc8d334f",
+    "revision": "2d12cca2fb9962033955",
     "url": "/portfolio/Vue_Bookkeeping/css/chunk-vendors.24ce4a6c.css"
   },
   {
-    "revision": "9d3a62ebf0770fc06d21867bee28ba62",
+    "revision": "95d8f1e52aaea762a8ba4815a5ac8532",
     "url": "/portfolio/Vue_Bookkeeping/index.html"
   },
   {
-    "revision": "64270673feea5314a8c7",
-    "url": "/portfolio/Vue_Bookkeeping/js/app.0e24430c.js"
+    "revision": "f0938dcb6dae25d2066b",
+    "url": "/portfolio/Vue_Bookkeeping/js/app.68715a38.js"
+  },
+  {
+    "revision": "b5e5cf242a9059b335e2",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-19281f84.79e53ba8.js"
   },
   {
     "revision": "2e271c2cd17d6f92349d",
     "url": "/portfolio/Vue_Bookkeeping/js/chunk-2d0c1056.3710d53e.js"
-  },
-  {
-    "revision": "5d69874c061e586ebaa3",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-2d0c9708.f10036f9.js"
   },
   {
     "revision": "77875dc4b19ef7bfa579",
@@ -44,16 +44,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio/Vue_Bookkeeping/js/chunk-48b4154c.b5885a4e.js"
   },
   {
-    "revision": "32b26d6db07504b42e56",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-5f4ad635.bc3919b4.js"
+    "revision": "2e899aa27509d54bac2b",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-5f4ad635.35a4d922.js"
   },
   {
-    "revision": "ed531ce26c72e72e9ac8",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-c420df12.465b120c.js"
+    "revision": "b454c411e1d755f9d703",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-c420df12.4ff1ecb0.js"
   },
   {
-    "revision": "1c68053df64fdc8d334f",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-vendors.9d706aeb.js"
+    "revision": "2d12cca2fb9962033955",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-vendors.50784adb.js"
   },
   {
     "revision": "32bb2a2c246bc1c8028100d01cb008fa",
