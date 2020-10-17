@@ -1,23 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f0938dcb6dae25d2066b",
+    "revision": "3bf115373639f1a3b0e8",
     "url": "/portfolio/Vue_Bookkeeping/css/app.4cd6f013.css"
   },
   {
-    "revision": "2d12cca2fb9962033955",
+    "revision": "38248bcf2614ecd7db26",
     "url": "/portfolio/Vue_Bookkeeping/css/chunk-vendors.24ce4a6c.css"
   },
   {
-    "revision": "95d8f1e52aaea762a8ba4815a5ac8532",
+    "revision": "4d13f8f35c3b9fa62a8b5bc186e3ae19",
     "url": "/portfolio/Vue_Bookkeeping/index.html"
   },
   {
-    "revision": "f0938dcb6dae25d2066b",
-    "url": "/portfolio/Vue_Bookkeeping/js/app.68715a38.js"
-  },
-  {
-    "revision": "b5e5cf242a9059b335e2",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-19281f84.79e53ba8.js"
+    "revision": "3bf115373639f1a3b0e8",
+    "url": "/portfolio/Vue_Bookkeeping/js/app.546bbee9.js"
   },
   {
     "revision": "2e271c2cd17d6f92349d",
@@ -40,20 +36,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio/Vue_Bookkeeping/js/chunk-2d2259e5.9b35af91.js"
   },
   {
-    "revision": "cb83f9533b0bfbeb4e36",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-48b4154c.b5885a4e.js"
+    "revision": "9ad95088f77993001f9a",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-48b4154c.2f25b46a.js"
   },
   {
-    "revision": "2e899aa27509d54bac2b",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-5f4ad635.35a4d922.js"
+    "revision": "2c4b355bdb782cc2a026",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-5f4ad635.ab9cd0f5.js"
   },
   {
-    "revision": "b454c411e1d755f9d703",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-c420df12.4ff1ecb0.js"
+    "revision": "8b11c1e5144f8f7a307d",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-64d57f70.5fb33aac.js"
   },
   {
-    "revision": "2d12cca2fb9962033955",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-vendors.50784adb.js"
+    "revision": "a883558f71c85c5c8ab9",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-c420df12.feb51e34.js"
+  },
+  {
+    "revision": "38248bcf2614ecd7db26",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-vendors.b19028da.js"
   },
   {
     "revision": "32bb2a2c246bc1c8028100d01cb008fa",
