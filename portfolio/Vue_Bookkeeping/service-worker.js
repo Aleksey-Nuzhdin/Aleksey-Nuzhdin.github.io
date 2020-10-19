@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/portfolio/Vue_Bookkeeping/precache-manifest.c04491a1f9f7b1f271537eb2e62a38ff.js"
+  "/portfolio/Vue_Bookkeeping/precache-manifest.e6dfb575758eb09343961fcba0495bbc.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "bookkeeping"});
