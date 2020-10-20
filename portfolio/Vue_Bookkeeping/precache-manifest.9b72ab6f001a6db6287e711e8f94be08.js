@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3302cc49d38efef69ca6",
+    "revision": "3483286796abe8120c85",
     "url": "/portfolio/Vue_Bookkeeping/css/app.7d742e9d.css"
   },
   {
@@ -8,12 +8,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio/Vue_Bookkeeping/css/chunk-vendors.24ce4a6c.css"
   },
   {
-    "revision": "0a68689fc43ccb568d484af02d36bf30",
+    "revision": "8f6be9c0b113b5f22d2e98e67c92c0dc",
     "url": "/portfolio/Vue_Bookkeeping/index.html"
   },
   {
-    "revision": "3302cc49d38efef69ca6",
-    "url": "/portfolio/Vue_Bookkeeping/js/app.3b407d90.js"
+    "revision": "3483286796abe8120c85",
+    "url": "/portfolio/Vue_Bookkeeping/js/app.ab81d586.js"
   },
   {
     "revision": "dd374be1ae68d2905052",
@@ -24,12 +24,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio/Vue_Bookkeeping/js/chunk-19281f84.cef82ab6.js"
   },
   {
-    "revision": "2a7358e625e1a67c2403",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-2d0d7699.692256cf.js"
-  },
-  {
     "revision": "258258e6e35189ea30da",
     "url": "/portfolio/Vue_Bookkeeping/js/chunk-2d217357.a5c89fda.js"
+  },
+  {
+    "revision": "3c1de682e4ba29fc2278",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-2d217a99.a8f13c27.js"
   },
   {
     "revision": "2c5608390198a3722a3d",
@@ -44,8 +44,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio/Vue_Bookkeeping/js/chunk-77d90a73.9aa37b73.js"
   },
   {
-    "revision": "dd6b37b49d5b1aa63d3b",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-b792b0c6.414ab4cb.js"
+    "revision": "b4817ce3507afe6b153d",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-b792b0c6.568e58a9.js"
   },
   {
     "revision": "a883558f71c85c5c8ab9",
