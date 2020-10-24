@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4e7a964e17caf9a8afbe",
+    "revision": "aa2c0a2b0b9a0875c96f",
     "url": "/portfolio/Vue_Bookkeeping/css/app.7d742e9d.css"
   },
   {
@@ -12,12 +12,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio/Vue_Bookkeeping/css/chunk-vendors.24ce4a6c.css"
   },
   {
-    "revision": "6b9fb5d959bd14fb76f53e0151d58e9f",
+    "revision": "288f86504924f3a60fd7046a33d9d253",
     "url": "/portfolio/Vue_Bookkeeping/index.html"
   },
   {
-    "revision": "4e7a964e17caf9a8afbe",
-    "url": "/portfolio/Vue_Bookkeeping/js/app.1c65f8b8.js"
+    "revision": "aa2c0a2b0b9a0875c96f",
+    "url": "/portfolio/Vue_Bookkeeping/js/app.4c7e02c0.js"
   },
   {
     "revision": "7744e708569a43d4f12b",
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/portfolio/Vue_Bookkeeping/js/chunk-2d217a99.c2461939.js"
   },
   {
-    "revision": "bc2f999853dfd7a303aa",
-    "url": "/portfolio/Vue_Bookkeeping/js/chunk-2d21a3d2.0d9290f8.js"
+    "revision": "cb904df2ae814564caef",
+    "url": "/portfolio/Vue_Bookkeeping/js/chunk-2d21a3d2.1be395d6.js"
   },
   {
     "revision": "5bf840fbfcd6c9b91418",
