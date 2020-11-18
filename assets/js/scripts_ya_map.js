@@ -4,7 +4,7 @@
 
 ymaps.ready(function () {
   var myMap = new ymaps.Map('map', {
-          center: [53.356830, 83.770523],
+          center: [55.057394, 82.904170],
           zoom: 16,
           controls: ['zoomControl']
       }, {
@@ -17,9 +17,9 @@ ymaps.ready(function () {
       ),
 
 
-      myPlacemarkWithContent = new ymaps.Placemark([53.354767, 83.777018], {
+      myPlacemarkWithContent = new ymaps.Placemark([55.055764, 82.904242], {
           hintContent: 'Мой дом',
-          balloonContent: 'Советская 4',
+          balloonContent: 'Дуси ковальчук 250',
           
       }, {
           // Опции.
