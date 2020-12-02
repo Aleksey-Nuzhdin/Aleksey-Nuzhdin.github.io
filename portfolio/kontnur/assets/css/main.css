@@ -1,0 +1,944 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Fira Sans";
+  src: url('/portfolio/kontnur/assets/fonts/FiraSans-Medium.ttf') format("truetype");
+  font-weight: 500; }
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url('/portfolio/kontnur/assets/fonts/FiraSans-Regular.ttf') format("truetype");
+  font-weight: 400; }
+
+@font-face {
+  font-family: "Mplus 1p";
+  src: url('/portfolio/kontnur/assets/fonts/MPLUS1p-Medium.ttf') format("truetype");
+  font-weight: 500; }
+
+.maincontent:after {
+  content: "";
+  display: block;
+  clear: both; }
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  outline: none; }
+
+a:hover {
+  text-decoration: none; }
+
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 16px; }
+
+.body {
+  min-width: 780px; }
+
+html {
+  width: 100%;
+  min-height: 100%;
+  height: 1px; }
+
+body {
+  font-size: 16px;
+  line-height: 1.42;
+  -webkit-font-smoothing: antialiased;
+  font-family: Arial;
+  min-width: 360px; }
+
+h1, h2, h3, h4, h4, h5 {
+  margin: 0;
+  font-weight: normal; }
+
+li {
+  text-decoration: none; }
+
+.wrapper {
+  max-width: 1155px;
+  padding: 0 20px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(40px, 1fr));
+  -webkit-column-gap: 25px;
+     -moz-column-gap: 25px;
+          column-gap: 25px; }
+
+.container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-width: 360px; }
+
+li {
+  list-style: none; }
+
+ul {
+  padding: 0;
+  margin: 0; }
+
+p {
+  margin: 0;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto; }
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+.section {
+  min-width: 360px; }
+
+.header__head .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  min-height: 40px; }
+
+.header__head {
+  width: 100%;
+  background-color: #EBEDEE; }
+
+.nav__header__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.nav__header__item {
+  margin-right: 55px; }
+
+.nav_header__btn {
+  height: 22px;
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #404040;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+  .nav_header__btn:hover {
+    color: #7c7c7c; }
+
+.header__address__phone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0; }
+  .header__address__phone > p {
+    font-family: 'Fira Sans';
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0em;
+    margin: 10px 16px; }
+
+.heder__main {
+  width: 100%; }
+
+.heder__main .wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 125px;
+  height: 125px; }
+
+.header__logo_block {
+  height: 101px;
+  width: 127px;
+  margin: 5px; }
+
+.header__logo_img {
+  display: block;
+  height: 101px;
+  width: 127px;
+  background-image: url(/portfolio/kontnur/img/logo.svg);
+  background-size: cover; }
+
+.search_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-flex: 5;
+      -ms-flex-positive: 5;
+          flex-grow: 5;
+  max-width: 520px;
+  height: 100%; }
+
+.tagline__title {
+  font-family: 'Fira Sans';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  margin-bottom: 18px; }
+
+.search__input {
+  height: 40px;
+  border: 1px solid #E1CEBE;
+  border-radius: 3px;
+  padding: 0 20px;
+  color: #806956;
+  font-family: 'Fira Sans';
+  font-weight: 400;
+  line-height: 14px; }
+  .search__input::-webkit-input-placeholder {
+    color: #E1CEBE;
+    opacity: 1; }
+  .search__input::-moz-placeholder {
+    color: #E1CEBE;
+    opacity: 1; }
+  .search__input:-ms-input-placeholder {
+    color: #E1CEBE;
+    opacity: 1; }
+  .search__input::-ms-input-placeholder {
+    color: #E1CEBE;
+    opacity: 1; }
+  .search__input::placeholder {
+    color: #E1CEBE;
+    opacity: 1; }
+
+.header__cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 78px;
+  width: 134px;
+  margin: 16px;
+  border-radius: 3px;
+  background: #EBEDEE; }
+
+.cart__icon {
+  background-image: url(/portfolio/kontnur/img/cart.svg);
+  height: 39px;
+  width: 41px;
+  margin-left: 13px; }
+
+.cart__count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 43px;
+  height: 25px;
+  margin: 0 15px;
+  background: #BED1E1;
+  border-radius: 3px;
+  font-family: 'Fira Sans';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em; }
+
+.nav__bar {
+  width: 100%;
+  min-height: 60px;
+  margin-bottom: 30px;
+  background-color: #E1CEBE; }
+  .nav__bar > .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+
+.bar__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+.bar__item {
+  margin: 10px 0;
+  border-radius: 3px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+  .bar__item:hover {
+    background: #FFFFFF; }
+
+.bar__linck {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 9px 50px;
+  font-family: 'Fira Sans';
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #404040;
+  white-space: nowrap;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+  .bar__linck:hover {
+    color: #404040; }
+
+.column_1 {
+  grid-column-start: 1;
+  grid-column-end: 4; }
+
+.column_2 {
+  grid-column-start: 4;
+  grid-column-end: 13; }
+
+.nav__catalog {
+  background: #BED1E1;
+  border-radius: 3px;
+  padding: 28px 0px 28px 28px;
+  margin-bottom: 30px; }
+
+.catalog__title {
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin-bottom: 16px; }
+
+.catalog__item {
+  position: relative;
+  padding: 8px 0;
+  padding-right: 32px;
+  margin-bottom: 7px;
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  cursor: pointer;
+  color: #404040;
+  z-index: 50; }
+  .catalog__item:hover {
+    color: #FFFFFF; }
+    .catalog__item:hover > .catalog_item__list {
+      -webkit-transform: scaleX(1);
+          -ms-transform: scaleX(1);
+              transform: scaleX(1);
+      opacity: 1; }
+
+.catalog_item__list {
+  position: absolute;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+  opacity: 0;
+  left: 100%;
+  top: 0;
+  padding: 19px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.25);
+          box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  cursor: default; }
+
+.catalog_item__item {
+  white-space: nowrap;
+  color: #404040;
+  font-family: 'Fira Sans';
+  padding: 5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  cursor: pointer;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+  .catalog_item__item:hover {
+    color: #566E98; }
+  .catalog_item__item:last-child {
+    margin-bottom: 0; }
+
+.section__news {
+  background: #EBEDEE;
+  border-radius: 3px;
+  padding: 22px 28px; }
+
+.news__title {
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin-bottom: 26px; }
+
+.news__item {
+  margin-bottom: 16px; }
+
+.news__item__date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 64px;
+  height: 22px;
+  margin-bottom: 12px;
+  background: #BED1E1;
+  border-radius: 3px;
+  font-family: 'Fira Sans';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #404040; }
+
+.news__item__text {
+  font-family: "Fira Sans";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  color: #404040; }
+
+.article__slider {
+  width: 100%;
+  height: 450px;
+  margin-bottom: 30px; }
+
+#carouselExampleIndicators {
+  height: 100%; }
+
+.carousel-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  background-image: url(/portfolio/kontnur/img/bg_slider.svg);
+  background-position: cover; }
+
+.baner__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 665px;
+  height: 114px;
+  margin: 0 auto;
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #FFFFFF;
+  background: rgba(64, 64, 64, 0.3); }
+
+.carousel-indicators > li {
+  opacity: 1;
+  display: block;
+  width: 34px;
+  height: 10px;
+  background: #566E98;
+  border-radius: 6px;
+  border: none;
+  margin-right: 20px; }
+  .carousel-indicators > li:last-child {
+    margin-right: 0; }
+  .carousel-indicators > li.active {
+    background: #fff; }
+
+.carousel-control-prev, .carousel-control-next {
+  width: 70px;
+  height: 100%;
+  opacity: 1;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+  .carousel-control-prev:hover, .carousel-control-next:hover {
+    background: rgba(225, 206, 190, 0.6); }
+    .carousel-control-prev:hover > .carousel-control-next-icon, .carousel-control-prev:hover .carousel-control-prev-icon, .carousel-control-next:hover > .carousel-control-next-icon, .carousel-control-next:hover .carousel-control-prev-icon {
+      background-color: #fff; }
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  height: 36px;
+  width: 22px;
+  background-color: #566E98;
+  background-image: none;
+  -webkit-mask-image: url(/portfolio/kontnur/img/Vector.svg);
+          mask-image: url(/portfolio/kontnur/img/Vector.svg);
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+
+.carousel-control-prev-icon {
+  -webkit-transform: scale(-1, 1);
+      -ms-transform: scale(-1, 1);
+          transform: scale(-1, 1); }
+
+.section__popular_products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 28px; }
+
+.popular_products__title {
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  margin-bottom: 21px;
+  font-size: 24px;
+  line-height: 29px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #404040; }
+
+.products__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  gap: 25px; }
+
+.products__item {
+  width: 100%;
+  width: 260px;
+  background: #EBEDEE;
+  border-radius: 3px;
+  overflow: hidden; }
+
+.product__img {
+  display: block;
+  width: 260px;
+  height: 260px;
+  background-image: url(/portfolio/kontnur/img/emptyPP.svg); }
+
+.product__info {
+  padding: 20px 11px 29px 11px; }
+
+.product__text {
+  height: 65px;
+  font-family: 'Fira Sans';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  padding: 0 10px;
+  border-bottom: 1px solid #FFFFFF; }
+
+.product__price {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: 'Fira Sans';
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  border-bottom: 1px solid #FFFFFF; }
+
+.car__block_input {
+  height: 58px;
+  margin-top: 17px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.input__wrap {
+  position: relative;
+  width: 95px;
+  height: 40px;
+  border-radius: 3px;
+  overflow: hidden; }
+
+.input__plus, .input__minus {
+  position: absolute;
+  top: 13px;
+  height: 15px;
+  width: 15px;
+  -webkit-mask-size: 15px 15px;
+          mask-size: 15px 15px;
+  background-color: #566E98;
+  cursor: pointer; }
+
+.input__plus {
+  right: 11px;
+  -webkit-mask-image: url(/portfolio/kontnur/img/plus.svg);
+          mask-image: url(/portfolio/kontnur/img/plus.svg); }
+
+.input__minus {
+  left: 11px;
+  -webkit-mask-image: url(/portfolio/kontnur/img/minus.svg);
+          mask-image: url(/portfolio/kontnur/img/minus.svg); }
+
+.input_car__count {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  margin: 0;
+  padding: 0 35px;
+  border: none;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #404040; }
+
+.btn_car__add_product {
+  display: block;
+  height: 40px;
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  color: #404040;
+  padding: 11px 26px;
+  background: #BED1E1;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+  .btn_car__add_product:hover {
+    background-color: #E1CEBE;
+    color: #404040; }
+
+.section__promitions {
+  margin-bottom: 50px; }
+
+.promitions__head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 25px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end; }
+
+.promitions__title {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  color: #404040; }
+
+.linck__all_promititons {
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  color: #566E98; }
+
+.promitions__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 25px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+.promitions__item {
+  width: 260px; }
+
+.promitions__img {
+  width: 260px;
+  height: 200px; }
+
+.promition__wrap_info {
+  position: relative;
+  height: 64px;
+  padding-top: 23px;
+  background-color: rgba(255, 255, 255, 0); }
+
+.promition__date {
+  position: absolute;
+  top: -13px;
+  left: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 64px;
+  height: 27px;
+  background: #BED1E1;
+  border-radius: 3px;
+  font-family: 'Fira Sans';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  /* Текст */
+  color: #404040; }
+
+.promition__title {
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #566E98;
+  cursor: pointer;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+  .promition__title:hover {
+    color: #E1CEBE; }
+
+.section__about_company {
+  margin-bottom: 35px; }
+
+.about_company__title {
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #404040;
+  margin-bottom: 30px; }
+
+.about_company_text {
+  padding-bottom: 22px; }
+  .about_company_text > p {
+    margin-bottom: 22px;
+    font-family: 'Fira Sans';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+    color: #404040; }
+    .about_company_text > p:last-child {
+      margin-bottom: 0; }
+
+.footer {
+  width: 100%;
+  padding: 17px 0px;
+  background: #BED1E1; }
+  .footer > .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+
+.footer__top {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(40px, 1fr));
+  -webkit-column-gap: 25px;
+     -moz-column-gap: 25px;
+          column-gap: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 11px; }
+
+.footer__logo_block {
+  grid-column-start: span 3; }
+
+.footer__logo_img {
+  display: block;
+  height: 101px;
+  width: 127px;
+  -webkit-mask-image: url(/portfolio/kontnur/img/logo.svg);
+          mask-image: url(/portfolio/kontnur/img/logo.svg);
+  background-color: #fff; }
+
+.footer__address {
+  grid-column-start: span 9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 0; }
+
+.footer_address__wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content; }
+
+.footer__address__city {
+  background-image: url(/portfolio/kontnur/img/location-marker.svg);
+  background-repeat: no-repeat;
+  padding-left: 36px;
+  font-family: 'Fira Sans';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  color: #404040; }
+
+.footer__address__email {
+  background-image: url(/portfolio/kontnur/img/mail.svg);
+  background-repeat: no-repeat;
+  padding-left: 36px;
+  font-family: 'Fira Sans';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  color: #404040; }
+
+.footer__address__phone {
+  background-image: url(/portfolio/kontnur/img/phone.svg);
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  font-family: 'Fira Sans';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  color: #404040; }
+
+.footer__bottom {
+  padding-top: 7px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.footer__text {
+  width: 50%;
+  height: 100%; }
+  .footer__text > p {
+    font-family: 'Fira Sans';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #404040; }
+    .footer__text > p > span {
+      margin-left: 15px; }
+
+.footer__make_site {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.make_site__text {
+  font-family: 'Mplus 1p';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #FFFFFF;
+  margin-right: 17px; }
+
+.logo__img__kontur {
+  display: block;
+  background-image: url(/portfolio/kontnur/img/Kontur.svg);
+  height: 39px;
+  width: 58px; }
+
+@media screen and (max-width: 480px) {
+    html {
+      font-size: 14px; } }
+
+@media screen and (max-width: 768px) {
+    .container {
+      min-height: 500px; } }
+
+.name_vue[data-v-9847e1ce] {
+  color: rgba(102, 187, 170, 0.4);
+}
+.example_conteiner[data-v-9847e1ce] {
+  color: blueviolet;
+}
+
+
+/*# sourceMappingURL=main.css.map*/
